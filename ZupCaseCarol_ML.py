@@ -19,10 +19,10 @@ from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
 # Model evaluation
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder as le, StandardScaler, LabelEncoder
+from sklearn.preprocessing import LabelEncoder as le, StandardScaler, LabelEncoder, MinMaxScaler
 from sklearn.metrics import confusion_matrix
 
-# Imbalance
+# Imbalance, tunning
 from imblearn.over_sampling import SMOTE
 from sklearn.utils import resample
 
@@ -171,7 +171,7 @@ X_train = X_train.iloc[: , :-1]
 
 ## Scaling the data
 
-scaler = StandardScaler()
+scaler = MinMaxScaler()
 #Fit transform the numerical features in the training dataset to a new dataframe
 scaled_numfeats_train = pd.DataFrame(scaler.fit_transform(X_train[num_col_names]),
                                      columns=num_col_names, index=X_train.index)

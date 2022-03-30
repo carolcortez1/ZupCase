@@ -220,15 +220,11 @@ print(cm)
 print('Model Testing Accuracy = "{}!"'.format((TP + TN) / (TP + TN + FN + FP)))
 print()  # Print a new line
 
-# Feature importance (the higher, the more important the feature).
-coef=np.absolute(np.round(logistic.coef_,3))
+# Feature importance (the positive scores indicate a feature that predicts class 1, whereas the negative scores indicate a feature that predicts class 0)
+coef=np.round(logistic.coef_,3)
 coef=coef.tolist()
-coef = pd.DataFrame({'feature':data.iloc[:, 1:data.shape[1]].columns,
-                     'coefficient':coef[0]})
+coef = pd.DataFrame({'feature':data.iloc[:, 1:data.shape[1]].columns,'coefficient':coef[0]})
 coef = coef.sort_values('coefficient',ascending=False).set_index('feature')
-
 print(coef)
-
 coef.plot.barh()
-
 plt.show()

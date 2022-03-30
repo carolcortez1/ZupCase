@@ -22,7 +22,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder as le, StandardScaler, LabelEncoder
 from sklearn.metrics import confusion_matrix
 
-# Imbalance, tunning
+# Imbalance
 from imblearn.over_sampling import SMOTE
 from sklearn.utils import resample
 
